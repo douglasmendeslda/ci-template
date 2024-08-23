@@ -1,0 +1,35 @@
+name: CI Template
+
+name: Reusable Python Workflow
+
+on:
+  workflow_call:
+    inputs:
+      python-version:
+        description: 'Version of Python to use'
+        required: true
+        type: string
+    secrets:
+      GITHUB_TOKEN:
+        required: true
+
+jobs:
+  setup-and-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python environment
+        uses: dougmendes/setup-python@main  # Substitua pelo repositório que contém a action composite
+        id: python-setup
+        with:
+          python-version: ${{ inputs.python-version }}
+
+      - name: Build Python project
+        run: "build"
+
+
+      - name: Print setup message
+        run: echo "${{ steps.python-setup.outputs.setup-message }}"
