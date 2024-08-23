@@ -17,13 +17,15 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Set up Python environment
-        uses: dougmendes/setup-python@main  # Substitua pelo repositório que contém a action composite
+        uses: douglasmendeslda/setup-python@main  # Substitua pelo repositório que contém a action composite
         id: python-setup
         with:
           python-version: ${{ inputs.python-version }}
 
       - name: Build Python project
-        run: "build"
+        run: echo "Running build..."
+        shell: bash
 
       - name: Print setup message
         run: echo "${{ steps.python-setup.outputs.setup-message }}"
+        shell: bash
