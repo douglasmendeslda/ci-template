@@ -22,8 +22,12 @@ jobs:
         with:
           python-version: ${{ inputs.python-version }}
 
-      - name: Build Python project
-        run: echo "Running build..."
+      - name: Build Project
+        run: |
+          echo "::group::Build Python project"
+          echo "Running build..."
+          build
+          echo "::endgroup::"
         shell: bash
 
       - name: Print setup message
