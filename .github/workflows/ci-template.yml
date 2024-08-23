@@ -1,5 +1,3 @@
-name: CI Template
-
 name: Reusable Python Workflow
 
 on:
@@ -29,7 +27,6 @@ jobs:
 
       - name: Build Python project
         run: "build"
-
 
       - name: Print setup message
         run: echo "${{ steps.python-setup.outputs.setup-message }}"
